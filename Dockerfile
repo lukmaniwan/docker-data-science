@@ -5,6 +5,7 @@ RUN apt-get update && yes|apt-get upgrade
 # Adding wget and bzip2
 RUN apt-get install -y wget bzip2
 RUN apt-get install -y vim
+RUN apt-get install -y textlive-xetext 
 # Anaconda installing
 RUN wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
 RUN bash Anaconda3-2020.07-Linux-x86_64.sh -b
