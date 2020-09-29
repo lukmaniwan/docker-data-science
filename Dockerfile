@@ -5,7 +5,7 @@ RUN apt-get update && yes|apt-get upgrade
 # Adding wget and bzip2
 RUN apt-get install -y wget bzip2
 RUN apt-get install -y vim
-RUN apt-get install -y textlive-xetext 
+#RUN apt-get install -y textlive-xetext 
 # Anaconda installing
 RUN wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
 RUN bash Anaconda3-2020.07-Linux-x86_64.sh -b
@@ -25,3 +25,9 @@ EXPOSE 8888
 # Run Jupytewr notebook as Docker main process
 CMD ["jupyter", "notebook", "--allow-root", "--notebook-dir=/opt/notebooks", "--ip='*'", "--port=8888", "--no-browser"]
 
+#Install module for tarteel.io
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Australia/Melbourne
+RUN apt-get install -y libsndfile1-dev
+RUN apt-get install -y ffmpeg
+RUN pip install deepspeech==0.7.1 google-cloud-speech==1.3.2 librosa pydub==0.23.1 soundfile tensorflow
